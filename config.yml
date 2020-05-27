@@ -3,10 +3,20 @@ description: My first learning lab on GitHub
 template:
   repo: myfirstlearninglab-template
   name: myfirstlearninglab
+  description: This is a sample repository for learning lab
 before:
   - type: createIssue
     title: Welcome!
     body: new-issue.md
+  - type: createFile
+    filename: myLearningLab.txt
+    branch: develop
+    message: Create myLearningLab.txt
+  - type: createPullRequest
+    title: Addition of new file myLearningLab.txt
+    head: develop
+    base: master
+    body: This is a sample body
 steps:
   - title: First step
     description: The first step in your course
@@ -14,3 +24,12 @@ steps:
     link: '{{ repoUrl }}'
     actions:
       - type: closeIssue
+  - title: Second Step
+    actions:
+      - type: createLabel
+        name: Label_1
+        color: FF0000
+        description: This is a test label
+    description: This is a second step
+    link: '{{ repoUrl }}'
+    event: check_run.completed
